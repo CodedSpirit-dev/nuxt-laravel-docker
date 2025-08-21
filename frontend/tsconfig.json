@@ -1,0 +1,41 @@
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "files": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@features/*": [
+        "src/features/*"
+      ],
+      "@widgets/*": [
+        "src/widgets/*"
+      ],
+      "@entities/*": [
+        "src/entities/*"
+      ],
+      "@shared/*": [
+        "src/shared/*"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
+  "references": [
+    {
+      "path": "./.nuxt/tsconfig.app.json"
+    },
+    {
+      "path": "./.nuxt/tsconfig.server.json"
+    },
+    {
+      "path": "./.nuxt/tsconfig.shared.json"
+    },
+    {
+      "path": "./.nuxt/tsconfig.node.json"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "name": "@nuxt/scripts",
+  "type": "module",
+  "version": "0.11.10",
+  "description": "Load third-party scripts with better performance, privacy and DX in Nuxt Apps.",
+  "author": {
+    "website": "https://harlanzw.com",
+    "name": "Harlan Wilton",
+    "url": "harlan@harlanzw.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt/scripts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nuxt/scripts/issues"
+  },
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    },
+    "./registry": "./dist/registry.mjs"
+  },
+  "main": "./dist/module.mjs",
+  "files": [
+    "dist"
+  ],
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ],
+      "registry": [
+        "./dist/registry.d.mts"
+      ]
+    }
+  },
+  "build": {
+    "externals": [
+      "@unhead/vue",
+      "@unhead/schema",
+      "knitwork",
+      "estree-walker",
+      "#build/modules/nuxt-scripts-gtm",
+      "#build/modules/nuxt-scripts-ga",
+      "@vimeo/player",
+      "esbuild",
+      "unimport",
+      "#nuxt-scripts/types",
+      "#nuxt-scripts-validator"
+    ]
+  },
+  "peerDependencies": {
+    "@stripe/stripe-js": "^7.0.0",
+    "@types/google.maps": "^3.58.1",
+    "@types/vimeo__player": "^2.18.3",
+    "@types/youtube": "^0.1.0",
+    "@unhead/vue": "^2.0.3"
+  },
+  "peerDependenciesMeta": {
+    "@stripe/stripe-js": {
+      "optional": true
+    },
+    "@types/google.maps": {
+      "optional": true
+    },
+    "@types/vimeo__player": {
+      "optional": true
+    },
+    "@types/youtube": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@nuxt/kit": "^4.0.0",
+    "@vueuse/core": "^13.5.0",
+    "consola": "^3.4.2",
+    "defu": "^6.1.4",
+    "h3": "^1.15.3",
+    "magic-string": "^0.30.17",
+    "ofetch": "^1.4.1",
+    "ohash": "^2.0.11",
+    "pathe": "^2.0.3",
+    "pkg-types": "^2.2.0",
+    "sirv": "^3.0.1",
+    "std-env": "^3.9.0",
+    "ufo": "^1.6.1",
+    "unplugin": "^2.3.5",
+    "unstorage": "^1.16.1",
+    "valibot": "^1.1.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools-kit": "^2.6.2",
+    "@nuxt/devtools-ui-kit": "^2.6.2",
+    "@nuxt/eslint-config": "^1.5.2",
+    "@nuxt/module-builder": "^1.0.1",
+    "@nuxt/test-utils": "3.19.2",
+    "@types/semver": "^7.7.0",
+    "@typescript-eslint/typescript-estree": "^8.37.0",
+    "acorn-loose": "^8.5.2",
+    "bumpp": "^10.2.0",
+    "changelogen": "^0.6.2",
+    "eslint": "9.31.0",
+    "eslint-plugin-n": "^17.21.0",
+    "happy-dom": "^18.0.1",
+    "knitwork": "^1.2.0",
+    "nuxt": "^4.0.0",
+    "playwright-core": "^1.54.1",
+    "shiki": "3.8.0",
+    "typescript": "5.8.3",
+    "vitest": "^3.2.4",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1",
+    "vue-tsc": "^3.0.1",
+    "@nuxt/scripts": "0.11.10"
+  },
+  "resolutions": {
+    "@nuxt/scripts": "workspace:*"
+  },
+  "scripts": {
+    "build": "pnpm dev:prepare && pnpm prepack",
+    "client:build": "nuxi generate client",
+    "client:dev": "nuxi dev client --port 3300",
+    "dev": "nuxi dev playground",
+    "dev:ssl": "nuxi dev playground --https",
+    "prepare:fixtures": "nuxi prepare test/fixtures/basic && nuxi prepare test/fixtures/cdn && nuxi prepare test/fixtures/extend-registry",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground && pnpm run prepare:fixtures",
+    "typecheck": "vue-tsc --noEmit",
+    "bump": "bumpp package.json --commit --push --tag",
+    "release": "pnpm build && bumpp -x \"npx changelogen --output=CHANGELOG.md\" && pnpm publish",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "pnpm dev:prepare && vitest --run",
+    "test:types": "echo 'broken due to type regeneration, use pnpm typecheck' && npx nuxi typecheck"
+  }
+}
