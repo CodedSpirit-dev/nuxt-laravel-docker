@@ -1,1 +1,4 @@
-node_modules
+/frontend/node_modules
+/frontend/node_modules/.pnpm/@ampproject+remapping@2.3.0/node_modules/@ampproject/remapping/dist/types/source-map-tree.d.ts
+/frontend/node_modules/**
+node_modules/
