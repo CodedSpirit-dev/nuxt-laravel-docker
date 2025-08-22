@@ -1,30 +1,5 @@
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui';
-import HomePage from '~/features/home/ui/HomePage.vue';
 import { UTable } from '#components';
-
-const items = ref<NavigationMenuItem[]>([
-  {
-    to: '/home',
-    label: 'Home',
-    icon: 'i-lucide-home',
-  },
-  {
-    to: '/blog',
-    label: 'Blog',
-    icon: 'i-lucide-notebook-tabs',
-  },
-  {
-    to: '/contact',
-    label: 'Contact',
-    icon: 'i-lucide-message-square-more',
-  },
-  {
-    to: '/about',
-    label: 'About',
-    icon: 'i-lucide-info',
-  },
-]);
 
 
 const data = ref([
@@ -68,7 +43,7 @@ const data = ref([
 
 <template>
   <h1>You are on the index page</h1>
-  <UNavigationMenu color="neutral" :items="items" class="w-full" />
+  <UNavigationMenu color="neutral" class="w-full" />
 <UTable :data="data" class="flex-1 m-10"  />
 
 </template>
