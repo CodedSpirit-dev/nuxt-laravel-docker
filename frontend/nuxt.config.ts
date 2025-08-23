@@ -23,7 +23,17 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    '@nuxt/ui'
+    '@nuxt/ui',
+    '@pinia/nuxt'
   ],
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      apiBase: 'http://localhost:8001',
+    },
+  },
+
+    pinia: {
+    storesDirs: ['./stores/**', './custom-folder/stores/**'],
+  },
 })
